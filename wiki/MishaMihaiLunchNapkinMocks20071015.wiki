@@ -1,0 +1,17 @@
+#labels mocks,prd
+= Misha and Mihai had lunch, drew first mocks and first class diagram on napkins =
+
+Here they are
+
+== Login and Register page ==
+
+http://bundzilla.googlecode.com/svn/wiki/images/login_register_mock.jpg
+
+== Resource Bundle View ==
+
+http://bundzilla.googlecode.com/svn/wiki/images/resource_bundle_view.jpg
+
+
+== First Class Diagram ==
+
+http://bundzilla.googlecode.com/svn/wiki/images/bundzilla_class_diagram.jpg
