@@ -19,7 +19,8 @@ http://bundzilla.googlecode.com/svn/wiki/images/resource_bundle_view.jpg
 
 This is a mock of a main page of the application: the resource bundle view. On this page we see the following parts:
 
-  * Header - currently contains only logout link, maybe more of them...
+  * Header - currently contains only logout link, maybe there will be more of them...
+
   * Left Menu - tree-based menu system to navigate to different pages
     * My Account - information about the current user
     * My Contacts - a convenience page to store the people you ever worked with on different projects
@@ -27,7 +28,26 @@ This is a mock of a main page of the application: the resource bundle view. On t
       * Team - the team roster for this project. Each team member has one or more languages associated with them
       * Bundles - each project can have multiple resource bundles (i.e. main ApplicationResources.properties, CaptionResources.properties, MessageResources.properties, and so on). Clicking on one of the bundle names opens the main bundle view
     
-  * Main Panel - when a user click on the left menu item, they are shown the corresponding page
+  * Main Panel - when a user click on the left menu item, they are shown the corresponding page. In this case we see the bundle view.
+
+=== Bundle View ===
+
+It is shown as a grid, with first column as the *key* for each entry in the resource bundle, other columns are corresponding to the languages we are translating this bundle to. On this picture we can see the following entries:
+
+  * in AppResources_en_US.properties:
+    * main.login=login
+    * main.register=Register
+  * in AppResources_ru_RU.properties:
+    * main.login=Логин
+    * main.register=Зарегистрироваться
+and so on for other languages and other entries...
+
+Some rules regarding this view and the process overall:
+
+  # User can have different roles in a project: "project admin" or "translator" (or both)
+    # *Project Admin* can create or remove bundles, add/remove team members, add/remove/modify entries and do all things that are available to translators
+    # *Translator* can only translate to their language(s)
+
 
 == First Class Diagram ==
 
