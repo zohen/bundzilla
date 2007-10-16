@@ -1,5 +1,5 @@
 #summary Misha and Mihai had lunch, drew first mocks and first class diagram on napkins
-#labels mocks,prd
+#labels mocks,prd,requirements
 = First mocks and first class diagram on napkins =
 
 Here they are
@@ -17,6 +17,11 @@ These are pretty standard. In addition:
 
 http://bundzilla.googlecode.com/svn/wiki/images/resource_bundle_view.jpg
 
+This is a mock of a main page of the application: the resource bundle view. On this page we see the following parts:
+
+  * Header - currently contains only logout link, maybe more of them...
+  * Left Menu - tree-based menu system to navigate to different pages
+  * Main Panel - when a user click on the left menu item, they are shown the corresponding page
 
 == First Class Diagram ==
 
