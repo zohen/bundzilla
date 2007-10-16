@@ -67,7 +67,7 @@ This class diagram reflects the following rules:
 
   # User can be assigned to a project to translate to certain languages (association class ProjectUserLanguageAssignment)
   # *NOT ON THIS DIAGRAM, WE FORGOT IT:* One or more users can be project admins, we need to add an association class ProjectAdmin
-    * *"ON THIS DIAGRAM IT'S SHOWN DIFFERENTLY:* Each project should have a "base language" (on the diagram we show a line between Bundle and Language and call it "reference language", I suggest to do it on the Project level for the sake of simplicity and call it "base language")
+    * *ON THIS DIAGRAM IT'S SHOWN DIFFERENTLY:* Each project should have a "base language" (on the diagram we show a line between Bundle and Language and call it "reference language", I suggest to do it on the Project level for the sake of simplicity and call it "base language")
   # Each Project can have multiple bundles
   # Each Bundle can have multiple entries. A typical entry have the following attributes:
     * Surrogate ID (e.g. 1, 2, 3...)
