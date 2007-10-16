@@ -25,7 +25,7 @@ This is a mock of a main page of the application: the resource bundle view. On t
     * My Contacts - a convenience page to store the people you ever worked with on different projects
     * My Projects - list of projects you are working on, for each project we have the following submenus:
       * Team - the team roster for this project. Each team member has one or more languages associated with them
-      * Bundles - each project can have multiple resource bundles (i.e. main ApplicationResources*.properties, CaptionResources*.properties, MessageResources*.properties, and so on). Clicking on one of the bundle names opens the main bundle view
+      * Bundles - each project can have multiple resource bundles (i.e. main ApplicationResources.properties, CaptionResources.properties, MessageResources.properties, and so on). Clicking on one of the bundle names opens the main bundle view
     
   * Main Panel - when a user click on the left menu item, they are shown the corresponding page
 
