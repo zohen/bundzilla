@@ -9,8 +9,9 @@ Here they are
 http://bundzilla.googlecode.com/svn/wiki/images/login_register_mock.jpg
 
 These are pretty standard. In addition:
-* login should have also "Remember Me" checkbox
-* registration page should also have the CAPTCHA part
+
+  * login should have also "Remember Me" checkbox
+  * registration page should also have the CAPTCHA part
 
 == Resource Bundle View ==
 
