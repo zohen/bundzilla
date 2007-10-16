@@ -1,12 +1,16 @@
 #summary Misha and Mihai had lunch, drew first mocks and first class diagram on napkins
 #labels mocks,prd
-= Misha and Mihai had lunch, drew first mocks and first class diagram on napkins =
+= First mocks and first class diagram on napkins =
 
 Here they are
 
 == Login and Register page ==
 
 http://bundzilla.googlecode.com/svn/wiki/images/login_register_mock.jpg
+
+These are pretty standard. In addition:
+* login should have also "Remember Me" checkbox
+* registration page should also have the CAPTCHA part
 
 == Resource Bundle View ==
 
