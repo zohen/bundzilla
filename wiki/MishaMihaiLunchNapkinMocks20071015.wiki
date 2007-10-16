@@ -47,7 +47,17 @@ Some rules regarding this view and the process overall:
   # User can have different roles in a project: "project admin" or "translator" (or both)
     # *Project Admin* can create or remove bundles, add/remove team members, add/remove/modify entries and do all things that are available to translators
     # *Translator* can only translate to their language(s)
-
+  # Each entry has a *"base language"* - in most cases it will be English (until the world changes its lingua franca :D )
+    # If the base language translation changes, then all translations in other languages for this entry become dirty and are highlighted in red on the resource bundle view
+    # When a new entry is added, emails are sent to each translator
+    # When the base language translation of an existing entry is modified, emails are sent to translators
+      * We may want to think about not sending emails after each entry, but accumulate several entries and send emails only every hour or so... Otherwise, the translators will be bombarded with huge number of emails
+    # If an entry is removed there is no need to send any emails
+  # The "Configure" link, that is visible at the right-top corner under "Logout" will show a popup modal window with settings for the resource bundle view. In these settings:
+    * user will choose to show only languages that are assigned to them
+    * or to show all languages
+  # The translation is only editable for those people who are assigned to this language, for all others (excluding project admin) the pertinent grid cell is read-only.
+    
 
 == First Class Diagram ==
 
