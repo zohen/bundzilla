@@ -1,3 +1,4 @@
+#summary Misha and Mihai had lunch, drew first mocks and first class diagram on napkins
 #labels mocks,prd
 = Misha and Mihai had lunch, drew first mocks and first class diagram on napkins =
 
