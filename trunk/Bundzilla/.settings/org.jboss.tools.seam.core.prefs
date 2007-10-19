@@ -1,0 +1,11 @@
+#Wed Oct 17 17:07:04 PDT 2007
+action.package=com.bundzilla.session
+eclipse.preferences.version=1
+model.package=com.bundzilla.entity
+seam.ear.project=Bundzilla-ear
+seam.ejb.project=Bundzilla-ejb
+seam.project.connection.profile=MySQL Test
+seam.project.deployment.type=ear
+seam.runtime.name=JBoss Seam 1.2 GA
+seam.test.project=Bundzilla-test
+test.package=com.bundzilla.test
