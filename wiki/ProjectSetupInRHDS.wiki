@@ -9,8 +9,10 @@ Well, good question, and better yet, you came to the right place with it. This d
 
 = Details =
 
-The first step for setting up the project in Red Hat Developer Studio is... well, _getting_ the IDE. That is, if you don't have it, and given that it's not [yet] one of the most ubiquitous IDEs in the market, you probably don't. 
+The first step for setting up the project in Red Hat Developer Studio is... well, _getting_ the IDE. That is, if you don't have it, and given that it's not \[yet\] one of the most ubiquitous IDEs in the market, you probably don't. 
 
 If the title hasn't gotten you concerned yet, now it's time you might be thinking about these: you don't know how to use it and you may not be able to afford it. Well, money is no problem - like most things from the boss of Java with a Red Hat, it's free. About how to use it, there's nothing I can do except from helping you learn it, but chances are that you've worked with Eclipse, in which case you're home: RHDS is nothing but a re-branded, vamped-up version of Eclipse. More features, and probably more bugs. 
 
-Now that you've started feeling relax and lost [most of] the mutinous thoughts, here's where you get it from [google for it - TODO put the link]. Note that it's version Beta 2, based on Eclipse Europa, and it's still buggy, especially in the SEAM part.
+Now that you've started feeling relaxed again and lost [most of] the mutinous thoughts, here's where you get it from: you google for it, until we put the link :D. Note that it's version Beta 2, based on Eclipse Europa, and it's still buggy, especially in the SEAM part.
+
+To be continued...
