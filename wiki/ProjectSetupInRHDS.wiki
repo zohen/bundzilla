@@ -5,7 +5,7 @@
 
 Let's say you've heard of this project and you're so thrilled about it, that you want to immediately jump in and help us with its development. Now the question is: how do you setup your development environment to be as productive as any other of its old-timers? 
 
-Well, good question, and better yet, you came to the right place for that answer. This document is supposed to provide you with the ultimate answer. 
+Well, good question, and better yet, you came to the right place with it. This document is supposed to provide you with its ultimate answer. 
 
 = Details =
 
