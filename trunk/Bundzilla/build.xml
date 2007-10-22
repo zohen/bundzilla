@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<project name="Bundzilla-web" default="war" basedir=".">
+
+	<property environment="env"/>
+	<property name="project.name" value="Bundzilla"/>
+	<property file="../build.properties"/>
+	<property file="${basedir}/build.properties"/>
+	<property name="profile" value="dev"/>
+	<property file="../build-${profile}.properties"/>
+	<fileset id="web-lib" dir="${local.src.web-lib.dir}">
+		<include name="*.jar"/>
+	</fileset>
+	<path id="build.classpath">
+		<fileset refid="web-lib"/>
+	</path>
+	<target name="init" description="Initialize the build">
+		<echo>env.BUNDZILLA_HOME = ${env.BUNDZILLA_HOME}</echo>
+		<echo>root.dir = ${root.dir}</echo>
+		<mkdir dir="${project.build.dir}"/>
+		<mkdir dir="${local.war.exploded.dir}"/>
+		<mkdir dir="${local.classes.dir}"/>
+	</target>
+	<target name="compile" depends="init" description="Compile the Java source code" unless="eclipse.running">
+		<javac classpathref="build.classpath" destdir="${local.classes.dir}" debug="${javac.debug}" deprecation="${javac.deprecation}" nowarn="on">
+			<src path="${local.src.dir}"/>
+		</javac>
+		<copy todir="${local.classes.dir}">
+			<fileset dir="${local.src.dir}">
+				<include name="**/*"/>
+				<exclude name="**/*.java"/>
+				<!-- the following two files exist only to "make RHDS validation happy" (code-name for "work around a bug"); we exclude them in the scripted build -->
+				<exclude name="META-INF/persistence.xml"/>
+				<exclude name="META-INF/orm.xml"/>
+				<exclude name="META-INF"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="copyclasses" depends="init" description="Copy the classes that were compiled by eclipse" if="eclipse.running">
+		<copy todir="${local.classes.dir}">
+			<fileset dir="build/classes">
+				<include name="**/*.class"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="exploded" depends="compile" description="Build the exploded image">
+		<copy todir="${local.war.exploded.dir}">
+			<fileset dir="${local.src.web.dir}">
+				<include name="**/*"/>
+				<exclude name="WEB-INF/lib/**/*"/>
+				<exclude name="WEB-INF/classes/META-INF"/>
+			</fileset>
+			<filterset>
+				<filter token="debug" value="${debug}"/>
+				<filter token="jndiPattern" value="${project.name}/#{ejbName}/local"/>
+				<filter token="embeddedEjb" value="false"/>
+			</filterset>
+		</copy>
+		<copy todir="${local.war.exploded.dir}/WEB-INF/lib">
+			<fileset dir="${local.src.web-lib.dir}"/>
+		</copy>
+		<!--copy todir="${war.dir}/WEB-INF/lib">
+                        <fileset dir="${lib.dir}">
+                                <include name="richfaces-*.jar" />
+                                <include name="oscache*.jar" />
+                                <include name="commons-digester.jar" />
+                                <include name="commons-beanutils.jar" />
+                                <include name="jsf-facelets.jar" />
+                                <include name="jboss-seam-*.jar" />
+                                <exclude name="jboss-seam-gen.jar" />
+                        </fileset>
+                </copy-->
+	</target>
+	<target name="war" depends="exploded" description="Package the archives">
+		<war warfile="${local.war.file}" webxml="${local.src.web.dir}/WEB-INF/web.xml" update="true">
+			<fileset dir="${local.war.exploded.dir}">
+				<include name="**/*"/>
+				<exclude name="WEB-INF/web.xml"/>
+			</fileset>
+		</war>
+	</target>
+	<target name="clean" description="Cleans up the build directory">
+		<delete dir="${project.build.dir}"/>
+		<delete dir="${local.war.exploded.dir}"/>
+	</target>
+	<!-- dunno what the heck this is for -->
+	<!--target name="validateConfiguration" depends="war" description="Validate the xml configuration files">
+		<mkdir dir="${schema.dir}"/>
+		<unjar src="${lib.dir}/jboss-seam.jar" dest="${schema.dir}">
+			<patternset>
+				<include name="org/jboss/seam/*.xsd"/>
+				<include name="org/jboss/seam/*.dtd"/>
+			</patternset>
+		</unjar>
+		<ant antfile="validate.xml" target="validateConfiguration"/>
+	</target-->
+</project>
