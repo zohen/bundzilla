@@ -49,11 +49,12 @@
 				<exclude name="WEB-INF/lib/**/*"/>
 				<exclude name="WEB-INF/classes/META-INF"/>
 			</fileset>
-			<filterset>
+			<!-- the following ain't working yet as I think I got the JNDI name wrong -->
+			<!--filterset>
 				<filter token="debug" value="${debug}"/>
 				<filter token="jndiPattern" value="${project.name}/#{ejbName}/local"/>
 				<filter token="embeddedEjb" value="false"/>
-			</filterset>
+			</filterset-->
 		</copy>
 		<copy todir="${local.war.exploded.dir}/WEB-INF/lib">
 			<fileset dir="${local.src.web-lib.dir}"/>
