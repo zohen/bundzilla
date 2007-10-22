@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project name="Bundzilla-ejb" default="jar" basedir=".">
+
+	<property environment="env"/>
+	<property name="project.name" value="Bundzilla-ejb"/>
+	<property file="../build.properties"/>
+	<property file="${basedir}/build.properties"/>
+	<property name="profile" value="dev"/>
+	<property file="../build-${profile}.properties"/>
+	<fileset id="ejb-lib" dir="${root.ear.content.dir}">
+		<include name="*.jar"/>
+	</fileset>
+	<path id="build.classpath">
+		<fileset refid="ejb-lib"/>
+		<pathelement location="${jboss.lib.dir}/jboss-ejb3x.jar"/>
+		<pathelement location="${jboss.lib.dir}/hibernate3.jar"/>
+		<pathelement location="${jboss.lib.dir}/hibernate-annotations.jar"/>
+		<pathelement location="${jboss.jsf.lib.dir}/jsf-api.jar"/>
+	</path>
+	<target name="init" description="Initialize the build">
+		<echo>root.dir = ${root.dir}</echo>
+		<mkdir dir="${project.build.dir}"/>
+		<mkdir dir="${local.jar.exploded.dir}"/>
+	</target>
+	<target name="compile" depends="init" description="Compile the Java source code" unless="eclipse.running">
+		<echo>local.jar.exploded.dir=${local.jar.exploded.dir}</echo>
+		<echo>local.src.dir=${local.src.dir}</echo>
+		<javac classpathref="build.classpath" destdir="${local.jar.exploded.dir}" debug="${javac.debug}" deprecation="${javac.deprecation}" nowarn="on">
+			<src path="${local.src.dir}"/>
+		</javac>
+		<copy todir="${local.jar.exploded.dir}">
+			<fileset dir="${local.src.dir}">
+				<include name="**/*"/>
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="copyclasses" depends="init" description="Copy the classes that were compiled by eclipse" if="eclipse.running">
+		<copy todir="${local.jar.exploded.dir}">
+			<fileset dir="build/classes">
+				<include name="**/*.class"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="exploded" depends="compile" description="Build the exploded image"/>
+	<target name="jar" depends="exploded" description="Package the archive">
+		<jar jarfile="${local.jar.file}" update="true">
+			<fileset dir="${local.jar.exploded.dir}">
+				<include name="**/*"/>
+			</fileset>
+		</jar>
+	</target>
+	<target name="clean" description="Cleans up the build directory">
+		<delete dir="${project.build.dir}"/>
+		<delete dir="${local.jar.exploded.dir}"/>
+	</target>
+</project>
