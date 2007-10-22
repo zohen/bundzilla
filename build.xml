@@ -16,8 +16,8 @@
 		</copy>
 	</target>
 	<target name="implode" description="Undeploy the exploded application archive">
-		<delete>
-			<fileset dir="${jboss.server.dir}/deploy/${root.ear.name}" includes="**/*"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${jboss.server.dir}/deploy/${root.ear.name}"/>
 		</delete>
 	</target>
 	<target name="dist" description="Build the distribution">
