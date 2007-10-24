@@ -69,4 +69,4 @@ Once you've installed RHDS, you can move on to downloading the project. If you'r
 You must be able to build the project from the command line, and you should do it every time right before you want to check in some changes. [BuildFromCommandLine Here] is how to do it. 
 
 == Setting up your IDE ==
-While nobody can force you to use an IDE or another, we strongly recommend you Red Hat Developer Studio Beta 2, since it's based on Eclipse 3.3 (Europa) and it has full support for Seam, RichFaces, Ajax4JSF and all the JBoss goodies (same company, eh?). [ Here]'s what you need to do to configure it for a seamless SEAMfull development with it. 
+While nobody can force you to use an IDE or another, we strongly recommend you Red Hat Developer Studio Beta 2, since it's based on Eclipse 3.3 (Europa) and it has full support for Seam, RichFaces, Ajax4JSF and all the JBoss goodies (same company, eh?). [ProjectSetupInRHDS Here]'s what you need to do to configure it for a seamless SEAMfull development with it. 
