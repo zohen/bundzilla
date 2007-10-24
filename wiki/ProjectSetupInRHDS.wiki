@@ -133,4 +133,7 @@ Here are the steps to prime it:
   # Enter "JBoss Seam 1.2 GA" and no other, and pick your base Seam 1.2 installation directory. Click "Finish".
   # [http://www.geocities.com/m_poplacenel/Bundzilla/NewSeamProject25.JPG]
   # Pick "ear" from "Deploy as", MySQL as the "Database Type", "MySQL Test" from the "Connection profile" drop-down and worry not about changing the Code generation. Hit "Finish" and you're done with this wizard. _Note_ here: it's happened to me that the MySQL connection profile I created in an earlier step was not present in the drop-down, nor would it let me create another with the same name. What I did was cancel the whole wizard and start it again, only this time the JBoss Runtime, the Seam Runtime and the "MySQL Test" connection profile were already there. 
-  # Once you kill the "Welcome" window, you will see the newly-created projects in RHDS. You may now delete them if you want, including or not the content - all we needed from these was the JBoss Runtime, Seam Runtime and MySQL Test configurations. 
+  # [http://www.geocities.com/m_poplacenel/Bundzilla/NewSeamProject26.JPG]
+  # Once you kill the "Welcome" window, you will see the newly-created projects in RHDS.   
+  # [http://www.geocities.com/m_poplacenel/Bundzilla/NewSeamProject27.JPG]
+  # You may now delete them if you want, including or not the content - all we needed from these was the JBoss Runtime, Seam Runtime and MySQL Test configurations. 
