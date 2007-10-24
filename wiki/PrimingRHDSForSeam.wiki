@@ -1,4 +1,4 @@
-#Priming RedHat Developer Studio for Seam
+#Priming Red Hat Developer Studio for Seam
 
 = Introduction =
 
