@@ -15,6 +15,8 @@ You should download and install the most recent JDK from http://java.sun.com. We
 == Installing JBoss ==
 You need to download [http://jboss.org JBoss] from [http://labs.jboss.com/jbossas/downloads/ here] and install it. We are using the [http://labs.jboss.com/downloading/?projectId=jbossas&url=http://sourceforge.net/project/showfiles.php?group_id=22866&package_id=16942&release_id=523619 4.2.1 GA] version, and I put it in JProgramFiles so its root directory in my examples will be C:\JProgramFiles\jboss-4.2.1.GA further down in the document. 
 
+ *Note*: you don't need to run it for now - just to unzip the downloaded archive. 
+
 == Installing Red Hat Developer Studio (RHDS) ==
 
 The first step for setting up the project in Red Hat Developer Studio (_RHDS_) is... well, _getting_ the IDE. That is, if you don't have it, and given that it's not {{{[}}}yet{{{]}}} one of the most ubiquitous IDEs in the market, you probably don't. 
