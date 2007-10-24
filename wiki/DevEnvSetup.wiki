@@ -1,13 +1,88 @@
 #summary Development Environment Setup
+#labels Phase-Implementation,Featured
 
 = Introduction =
 
-Add your content here.
+Let's say you've heard of this project and you're so thrilled about it, that you want to immediately jump in and help us with its development. Now the question is: how do you setup your development environment to be as productive as any other of its old-timers? 
 
+Well, good question, and better yet, you came to the right place with it. This document is supposed to provide you with its ultimate answer. 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Installing the JDK ==
+You should download and install the most recent JDK from http://java.sun.com. We're currently using 1.5.0_11, so you will see references to that particular version further down in the document; that does not mean it's the only supported one, other 1.5.0 minor releases are probably working/going to work with no problems, although it'll be up to you to verify :D. So if you're going to use another version, please substitute the references to our version with what's appropriate for your actual installation. 
+
+== Installing and configuring MySQL ==
+Next, you need to install a [http://www.mysql.com/ MySQL] Community Server with InnoDb engine on your machine. You can download the kit from [http://dev.mysql.com/downloads/mysql/5.0.html#win32 here]. Pick the "Windows Essentials (x86)" (22.9M). 
+
+You will also need the [http://www.mysql.com/products/connector/j/ JDBC driver] (the 5.0 version). You can find it in [http://dev.mysql.com/downloads/connector/j/5.0.html here]. Just unzip it to a folder of your choice. 
+
+== Installing JBoss ==
+You need to download [http://jboss.org JBoss] from [http://labs.jboss.com/jbossas/downloads/ here] and install it. We are using the [http://labs.jboss.com/downloading/?projectId=jbossas&url=http://sourceforge.net/project/showfiles.php?group_id=22866&package_id=16942&release_id=523619 4.2.1 GA] version, and I put it in JProgramFiles so its root directory in my examples will be C:\JProgramFiles\jboss-4.2.1.GA further down in the document. 
+
+ *Note*: you don't need to run it for now - just to unzip the downloaded archive. 
+
+== Installing Red Hat Developer Studio (RHDS) ==
+
+The first step for setting up the project in Red Hat Developer Studio (_RHDS_) is... well, _getting_ the IDE. That is, if you don't have it, and given that it's not {{{[}}}yet{{{]}}} one of the most ubiquitous IDEs in the market, you probably don't. 
+
+If the title hasn't gotten you concerned yet, now it's time you might be thinking about these: 
+  # you don't know how to use it, and 
+  # you may not be able to afford it. 
+
+Well, 
+  # money is no problem - like most things from the boss of Java with a Red Hat, it's free; 
+  # about how to use it, there's nothing I can do except from helping you learn it, but chances are that you've worked with Eclipse, in which case you're home: RHDS is nothing but a re-branded, vamped-up version of Eclipse. More features, and probably more bugs. 
+
+Now that you've started feeling relaxed again and lost {{{[}}}most of{{{]}}} the mutinous thoughts, here's where you get it from [http://www.redhat.com/developers/rhds/index.html here]. Note that it's version Beta 2, based on Eclipse Europa, and it's still buggy, especially in the SEAM part. The URL might change in the future, as they -hopefully- update with new Beta versions (or even the bug-free release one ;)), so feel free to google for it if our link gets out of sync. 
+
+== Downloading SVN ==
+In order to get the sources, you need the version control client for SVN. I recommend you the command line one, although if you're an "advanced" user, you may feel free to try with any other client of your choice. *Remember* though: if you try with another command line client, you're on your own!
+
+The SVN home page is http://subversion.tigris.org/. You get the SVN command line from [http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=8100&expandFolder=8100&folderID=8100 the downloads page]; the one I recommend using is [http://subversion.tigris.org/downloads/1.4.5-win32/apache-2.2/svn-win32-1.4.5.zip svn-win32-1.4.5.zip]. Unzip it in a folder for now - next you will learn how to put the executable in your path. I will assume you unzipped the archive to c:\JProgramFiles in the following sections.  
+
+== Installing the SVN plugin for RHDS ==
+You will need the [http://subclipse.tigris.org/ SVN plugin] if you want to directly check in and update code from RHDS. Since RHDS is based on Eclipse 3.3 Europa, you will need version 1.2.4 or above. To install it, you will have to point RHDS to download it from [http://subclipse.tigris.org/update_1.2.x]. 
+
+== Preparing the setEnv batch file ==
+While you can modify the necessary variables in your global environment, I will recommend you to use a file you source in a command window before starting to work on Bundzilla. This eliminates the side-effects you might have by using environment entries modified by programs installed later on your machine, or, why not, the ones meant for Bundzilla _with_ programs installed _previously_ on your machine. 
+
+=== Creating the batch file ===
+In order for your svn client to be accessible to your shell/command windows, you will have to include its parent directory in the Operating System's path. I will give you here the instructions for MS Windows - I trust you will understand what needs to be done if you're planning to develop on a Linux/Unix system. 
+
+With a pure-text editor of your choice (Notepad, Vi, Emacs) create a file named setEnv.cmd and place it in an easily-accessible folder (e.g. right under C:\). In the editor, add the following: 
+{{{
+ title Bundzilla
+ set JAVA_HOME=c:\Program Files\Java\jdk1.5.0_11
+ path %PATH%;C:\JProgramFiles\svn-win32-1.4.5\bin;%JAVA_HOME%\bin
+ set CLASSPATH=
+}}}
+Remember to substitute {{{C:\JProgramFiles\svn-win32-1.4.5}}} with the actual path to where you unzipped the downloaded svn client file. 
+
+=== Sourcing the batch file ===
+Open a command window and source the file:
+{{{
+C:\Windows> C:\setEnv.cmd
+}}}
+
+=== Testing your svn client ===
+In the same window, check your client is accessible by typing: 
+{{{
+C:\Windows> svn --version
+svn, version 1.4.5 (r25188)
+   compiled Aug 22 2007, 20:56:15
+
+Copyright (C) 2000-2006 CollabNet.
+Subversion is open source software, see http://subversion.tigris.org/
+This product includes software developed by CollabNet (http://www.Collab.Net/).
+...
+}}}
+
+== Checking out the code from SVN ==
+
+Once you've installed RHDS, you can move on to downloading the project. If you're reading this page, you probably know already where to get it from. Just in case you don't, here are the [http://code.google.com/p/bundzilla/source instructions]. From now on, we'll assume you've checked out the project sources to your local folder {{{C:\bundzilla}}}.
+
+== "Priming" RHDS for Seam ==
+Due to a bug in the Seam support part of RHDS, you'll have to "prime" the IDE by creating a project with the wizard prior to importing the projects you checked out from Google Code with SVN. The full description can be found [PrimingRHDSForSeam here].
+
+You must follow the instructions in that page to be able to move any forward. 
