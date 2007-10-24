@@ -1,4 +1,4 @@
-#Importing the Bundzilla Projects in RHDS
+#summary Importing the Bundzilla Projects in RHDS
 
 We hope you reached this page after you checked [PrimingRHDSForSeam]. If not, we urge you to follow [PrimingRHDSForSeam those] instructions, or you will not be able to build Bundzilla in RHDS. 
 
