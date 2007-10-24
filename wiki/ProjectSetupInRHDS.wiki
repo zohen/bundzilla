@@ -41,6 +41,9 @@ In order to get the sources, you need the version control client for SVN. I reco
 
 The SVN home page is http://subversion.tigris.org/. You get the SVN command line from [http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=8100&expandFolder=8100&folderID=8100 the downloads page]; the one I recommend using is [http://subversion.tigris.org/downloads/1.4.5-win32/apache-2.2/svn-win32-1.4.5.zip svn-win32-1.4.5.zip]. Unzip it in a folder for now - next you will learn how to put the executable in your path. I will assume you unzipped the archive to c:\JProgramFiles in the following sections.  
 
+== Installing the SVN plugin for RHDS ==
+You will need the [http://subclipse.tigris.org/ SVN plugin] if you want to directly check in and update code from RHDS. Since RHDS is based on Eclipse 3.3 Europa, you will need version 1.2.4 or above. To install it, you will have to point RHDS to download it from [http://subclipse.tigris.org/update_1.2.x]. 
+
 == Preparing the setEnv batch file ==
 While you can modify the necessary variables in your global environment, I will recommend you to use a file you source in a command window before starting to work on Bundzilla. This eliminates the side-effects you might have by using environment entries modified by programs installed later on your machine, or, why not, the ones meant for Bundzilla _with_ programs installed _previously_ on your machine. 
 
