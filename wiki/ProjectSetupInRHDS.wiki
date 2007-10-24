@@ -9,6 +9,9 @@ Well, good question, and better yet, you came to the right place with it. This d
 
 = Details =
 
+== Installing the JDK ==
+You should download and install the most recent JDK from http://java.sun.com. We're currently using 1.5.0_11, so you will see references to that particular version further down in the document; that does not mean it's the only supported one, other 1.5.0 minor releases are probably working/going to work with no problems, although it'll be up to you to verify :D. So if you're going to use another version, please substitute the references to our version with what's appropriate for your actual installation. 
+
 == Installing Red Hat Developer Studio (RHDS) ==
 
 The first step for setting up the project in Red Hat Developer Studio (_RHDS_) is... well, _getting_ the IDE. That is, if you don't have it, and given that it's not {{{[}}}yet{{{]}}} one of the most ubiquitous IDEs in the market, you probably don't. 
@@ -25,13 +28,17 @@ In order to get the sources, you need the version control client for SVN. I reco
 The SVN home page is http://subversion.tigris.org/. You get the SVN command line from [http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=8100&expandFolder=8100&folderID=8100 the downloads page]; the one I recommend using is [http://subversion.tigris.org/downloads/1.4.5-win32/apache-2.2/svn-win32-1.4.5.zip svn-win32-1.4.5.zip]. Unzip it in a folder for now - next you will learn how to put the executable in your path. I will assume you unzipped the archive to c:\JProgramFiles in the following sections.  
 
 == Preparing the setEnv batch file ==
+While you can modify the necessary variables in your global environment, I will recommend you to use a file you source in a command window before starting to work on Bundzilla. This eliminates the side-effects you might have by using environment entries modified by programs installed later on your machine, or, why not, the ones meant for Bundzilla _with_ programs installed _previously_ on your machine. 
+
 === Creating the batch file ===
 In order for your svn client to be accessible to your shell/command windows, you will have to include its parent directory in the Operating System's path. I will give you here the instructions for MS Windows - I trust you will understand what needs to be done if you're planning to develop on a Linux/Unix system. 
 
 With a pure-text editor of your choice (Notepad, Vi, Emacs) create a file named setEnv.cmd and place it in an easily-accessible folder (e.g. right under C:\). In the editor, add the following: 
 {{{
  title Bundzilla
- path %PATH%;C:\JProgramFiles\svn-win32-1.4.5\bin
+ set JAVA_HOME=c:\Program Files\Java\jdk1.5.0_11
+ path %PATH%;C:\JProgramFiles\svn-win32-1.4.5\bin;%JAVA_HOME%\bin
+ set CLASSPATH=
 }}}
 Remember to substitute {{{C:\JProgramFiles\svn-win32-1.4.5}}} with the actual path to where you unzipped the downloaded svn client file. 
 
