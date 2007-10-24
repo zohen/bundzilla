@@ -12,13 +12,20 @@ Well, good question, and better yet, you came to the right place with it. This d
 == Installing the JDK ==
 You should download and install the most recent JDK from http://java.sun.com. We're currently using 1.5.0_11, so you will see references to that particular version further down in the document; that does not mean it's the only supported one, other 1.5.0 minor releases are probably working/going to work with no problems, although it'll be up to you to verify :D. So if you're going to use another version, please substitute the references to our version with what's appropriate for your actual installation. 
 
+== Installing JBoss ==
+You need to download [http://jboss.org JBoss] from [http://labs.jboss.com/jbossas/downloads/ here] and install it. We are using the [http://labs.jboss.com/downloading/?projectId=jbossas&url=http://sourceforge.net/project/showfiles.php?group_id=22866&package_id=16942&release_id=523619 4.2.1 GA] version, and I put it in JProgramFiles so its root directory in my examples will be C:\JProgramFiles\jboss-4.2.1.GA further down in the document. 
+
 == Installing Red Hat Developer Studio (RHDS) ==
 
 The first step for setting up the project in Red Hat Developer Studio (_RHDS_) is... well, _getting_ the IDE. That is, if you don't have it, and given that it's not {{{[}}}yet{{{]}}} one of the most ubiquitous IDEs in the market, you probably don't. 
 
 If the title hasn't gotten you concerned yet, now it's time you might be thinking about these: 
-# you don't know how to use it, and 
-# you may not be able to afford it. Well, money is no problem - like most things from the boss of Java with a Red Hat, it's free. About how to use it, there's nothing I can do except from helping you learn it, but chances are that you've worked with Eclipse, in which case you're home: RHDS is nothing but a re-branded, vamped-up version of Eclipse. More features, and probably more bugs. 
+  # you don't know how to use it, and 
+  # you may not be able to afford it. 
+
+Well, 
+  # money is no problem - like most things from the boss of Java with a Red Hat, it's free; 
+  # about how to use it, there's nothing I can do except from helping you learn it, but chances are that you've worked with Eclipse, in which case you're home: RHDS is nothing but a re-branded, vamped-up version of Eclipse. More features, and probably more bugs. 
 
 Now that you've started feeling relaxed again and lost {{{[}}}most of{{{]}}} the mutinous thoughts, here's where you get it from [http://www.redhat.com/developers/rhds/index.html here]. Note that it's version Beta 2, based on Eclipse Europa, and it's still buggy, especially in the SEAM part. The URL might change in the future, as they -hopefully- update with new Beta versions (or even the bug-free release one ;)), so feel free to google for it if our link gets out of sync. 
 
@@ -63,4 +70,15 @@ This product includes software developed by CollabNet (http://www.Collab.Net/).
 
 == Checking out the code from SVN ==
 
-Once you've installed RHDS, you can move on to downloading the project. If you're reading this page, you probably know already where to get it from. Just in case you don't, here are the [http://code.google.com/p/bundzilla/source instructions]. 
+Once you've installed RHDS, you can move on to downloading the project. If you're reading this page, you probably know already where to get it from. Just in case you don't, here are the [http://code.google.com/p/bundzilla/source instructions]. From now on, we'll assume you've checked out the project sources to your local folder {{{C:\bundzilla}}}.
+
+== "Priming" RHDS for Seam ==
+Due to a bug in the Seam support part of RHDS, you'll have to "prime" the IDE by creating a project with the wizard prior to importing the projects you checked out from Google Code with SVN. 
+
+Here are the steps to prime it: 
+  # Open the RHDS IDE. 
+  # Choose `Help` -> `Welcome` from the menus.
+  # Choose `Create new...`.
+  # Choose `Create Seam Project`.
+  # Enter `Test` for the "Project name", choose "Dynamic Web Project with Seam 1.2" from the "Configurations" drop-down, and hit "Next".
+  # 
