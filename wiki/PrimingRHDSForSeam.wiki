@@ -67,4 +67,4 @@ Here are the steps for priming your brand-new RHDS workspace for Seam. These mus
   # [http://www.geocities.com/m_poplacenel/Bundzilla/NewSeamProject27.JPG]
   # You may now delete them if you want, including or not the content - all we needed from these was the JBoss Runtime, Seam Runtime and MySQL Test configurations. 
 
-That's all! :D
+That's all! :D Now you can move forward to [ImportingBundzillaProjectsInRHDS Importing the Bundzilla projects into RHDS]. 
