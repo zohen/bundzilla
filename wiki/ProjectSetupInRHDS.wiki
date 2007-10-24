@@ -20,8 +20,40 @@ If the title hasn't gotten you concerned yet, now it's time you might be thinkin
 Now that you've started feeling relaxed again and lost {{{[}}}most of{{{]}}} the mutinous thoughts, here's where you get it from [http://www.redhat.com/developers/rhds/index.html here]. Note that it's version Beta 2, based on Eclipse Europa, and it's still buggy, especially in the SEAM part. The URL might change in the future, as they -hopefully- update with new Beta versions (or even the bug-free release one ;)), so feel free to google for it if our link gets out of sync. 
 
 == Downloading SVN ==
+In order to get the sources, you need the version control client for SVN. I recommend you the command line one, although if you're an "advanced" user, you may feel free to try with any other client of your choice. *Remember* though: if you try with another command line client, you're on your own!
 
+The SVN home page is http://subversion.tigris.org/. You get the SVN command line from [http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=8100&expandFolder=8100&folderID=8100 the downloads page]; the one I recommend using is [http://subversion.tigris.org/downloads/1.4.5-win32/apache-2.2/svn-win32-1.4.5.zip svn-win32-1.4.5.zip]. Unzip it in a folder for now - next you will learn how to put the executable in your path. I will assume you unzipped the archive to c:\JProgramFiles in the following sections.  
 
-== Checking out (downloading) the code from SVN ==
+== Preparing the setEnv batch file ==
+=== Creating the batch file ===
+In order for your svn client to be accessible to your shell/command windows, you will have to include its parent directory in the Operating System's path. I will give you here the instructions for MS Windows - I trust you will understand what needs to be done if you're planning to develop on a Linux/Unix system. 
+
+With a pure-text editor of your choice (Notepad, Vi, Emacs) create a file named setEnv.cmd and place it in an easily-accessible folder (e.g. right under C:\). In the editor, add the following: 
+{{{
+ title Bundzilla
+ path %PATH%;C:\JProgramFiles\svn-win32-1.4.5\bin
+}}}
+Remember to substitute {{{C:\JProgramFiles\svn-win32-1.4.5}}} with the actual path to where you unzipped the downloaded svn client file. 
+
+=== Sourcing the batch file ===
+Open a command window and source the file:
+{{{
+C:\Windows> C:\setEnv.cmd
+}}}
+
+=== Testing your svn client ===
+In the same window, check your client is accessible by typing: 
+{{{
+C:\Windows> svn --version
+svn, version 1.4.5 (r25188)
+   compiled Aug 22 2007, 20:56:15
+
+Copyright (C) 2000-2006 CollabNet.
+Subversion is open source software, see http://subversion.tigris.org/
+This product includes software developed by CollabNet (http://www.Collab.Net/).
+...
+}}}
+
+== Checking out the code from SVN ==
 
 Once you've installed RHDS, you can move on to downloading the project. If you're reading this page, you probably know already where to get it from. Just in case you don't, here are the [http://code.google.com/p/bundzilla/source instructions]. 
