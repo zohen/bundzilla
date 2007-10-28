@@ -3,10 +3,10 @@
 
 	<property environment="env"/>
 	<property name="project.name" value="Bundzilla"/>
-	<property file="../build.properties"/>
+	<property file="../Bundzilla-ear//build.properties"/>
 	<property file="${basedir}/build.properties"/>
 	<property name="profile" value="dev"/>
-	<property file="../build-${profile}.properties"/>
+	<property file="${root.ear.project.dir}/build-${profile}.properties"/>
 	<fileset id="web-lib" dir="${local.src.web-lib.dir}">
 		<include name="*.jar"/>
 	</fileset>

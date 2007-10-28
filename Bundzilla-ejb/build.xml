@@ -3,10 +3,10 @@
 
 	<property environment="env"/>
 	<property name="project.name" value="Bundzilla-ejb"/>
-	<property file="../build.properties"/>
+	<property file="../Bundzilla-ear/build.properties"/>
 	<property file="${basedir}/build.properties"/>
 	<property name="profile" value="dev"/>
-	<property file="../build-${profile}.properties"/>
+	<property file="${root.ear.project.dir}/build-${profile}.properties"/>
 	<fileset id="ejb-lib" dir="${root.ear.content.dir}">
 		<include name="*.jar"/>
 	</fileset>
