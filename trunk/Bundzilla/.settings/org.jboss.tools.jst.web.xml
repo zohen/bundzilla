@@ -294,6 +294,10 @@
   LOCATION="%workspace.home%/lib/ajax4jsf-1.1.1-snapshot.jar" NAME="lib-ajax4jsf-1.1.1-snapshot.jar"/>
  <FILESYSTEM ENTITY="FileSystemJar"
   LOCATION="%workspace.home%/lib/richfaces-3.0.1-snapshot.jar" NAME="lib-richfaces-3.0.1-snapshot.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="C:\home\mpoplace\work\BundzillaClean\Bundzilla\web\WEB-INF\lib\ajax4jsf-1.1.1-SNAPSHOT.jar" NAME="lib-ajax4jsf-1.1.1-SNAPSHOT.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="C:\home\mpoplace\work\BundzillaClean\Bundzilla\web\WEB-INF\lib\richfaces-3.0.1-SNAPSHOT.jar" NAME="lib-richfaces-3.0.1-SNAPSHOT.jar"/>
  <WEB ENTITY="JstWeb" MODEL_PATH="/web.xml" SERVLET_VERSION="2.4">
   <MODULE ENTITY="WebJSFModule" MODEL_PATH="/faces-config.xml"
    ROOT="WEB-ROOT" SRC="src" URI="/WEB-INF/faces-config.xml"/>
