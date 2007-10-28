@@ -39,6 +39,7 @@ With a pure-text editor of your choice (Notepad, Vi, Emacs) create a file named 
  set JAVA_HOME=c:\Program Files\Java\jdk1.5.0_11
  path %PATH%;C:\JProgramFiles\svn-win32-1.4.5\bin;%JAVA_HOME%\bin
  set CLASSPATH=
+ set BUNDZILLA_HOME=C:\home\mihai\work\Bundzilla
 }}}
 Remember to substitute {{{C:\JProgramFiles\svn-win32-1.4.5}}} with the actual path to where you unzipped the downloaded svn client file. 
 
