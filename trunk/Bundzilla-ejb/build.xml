@@ -16,6 +16,7 @@
 		<pathelement location="${jboss.lib.dir}/hibernate3.jar"/>
 		<pathelement location="${jboss.lib.dir}/hibernate-annotations.jar"/>
 		<pathelement location="${jboss.jsf.lib.dir}/jsf-api.jar"/>
+		<pathelement location="${jboss.lib.dir}/ejb3-persistence.jar"/>
 	</path>
 	<target name="init" description="Initialize the build">
 		<echo>root.dir = ${root.dir}</echo>
