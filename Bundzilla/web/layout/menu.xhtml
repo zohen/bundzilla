@@ -8,10 +8,15 @@
      <rich:toolBarGroup>
          <h:outputText value="#{projectName}:"/>
          <s:link view="/home.xhtml" value="Home"/>
+         <s:link view="/hello.xhtml" value="Hello"/>
+         <!-- EL s:hasRole('admin') works for positive but breaks the negative cases due to a Seam bug -->
+ 		 <!-- s:link view="/userList.xhtml" value="Users" rendered="#{identity.loggedIn and s:hasRole('admin')}"/ -->
+ 		 <s:link view="/userList.xhtml" value="Users" rendered="#{identity.loggedIn}"/>
      </rich:toolBarGroup>
      <rich:toolBarGroup location="right">
          <h:outputText value="Welcome, #{identity.username}" rendered="#{identity.loggedIn}"/>
          <s:link view="/login.xhtml" value="Login" rendered="#{not identity.loggedIn}"/>
+         <s:link view="/user.xhtml" value="Register" rendered="#{not identity.loggedIn}"/>
          <s:link view="/home.xhtml" action="#{identity.logout}" value="Logout" rendered="#{identity.loggedIn}"/>
      </rich:toolBarGroup>
 </rich:toolBar>
