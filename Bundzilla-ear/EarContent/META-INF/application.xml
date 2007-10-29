@@ -52,5 +52,8 @@
    <module>
       <java>stringtemplate-2.3b6.jar</java>
    </module>
+   <module>
+      <java>el-ri.jar</java>
+   </module>
     
 </application>
