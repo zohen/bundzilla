@@ -17,9 +17,16 @@
         <ui:param name="projectName" value="Bundzilla"/>
     </ui:include>
 
-	<div class="body">
-		<ui:insert name="body"/>
-	</div>
+    <table border="0">
+        <tr>
+            <td class="vmenu">
+                <ui:include src="vmenu.xhtml"/>
+            </td>
+            <td class="body">
+                <ui:insert name="body"/>
+            </td>
+        </tr>
+    </table>
 
 	<div class="footer">
 		Powered by <a href="http://jboss.com/products/seam">Seam</a>.
