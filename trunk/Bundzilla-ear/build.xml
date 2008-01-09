@@ -6,14 +6,17 @@
 	<property name="profile" value="dev"/>
 	<property file="build-${profile}.properties"/>
 	<target name="exploded" description="Build the exploded application archive">
-		<ant antfile="../Bundzilla-ejb/build.xml" target="exploded" inheritall="false"/>
-		<ant antfile="../Bundzilla/build.xml" target="exploded" inheritall="false"/>
-		<ant antfile="build-local.xml" target="exploded" inheritall="false"/>
+		<ant antfile="../Bundzilla-ejb/build.xml" target="exploded" inheritAll="false" dir="${root.dir}/Bundzilla-ejb"/>
+		<ant antfile="../Bundzilla/build.xml" target="exploded" inheritAll="false" dir="${root.dir}/Bundzilla"/>
+		<ant antfile="build-local.xml" target="exploded" inheritAll="false"/>
 	</target>
 	<target name="explode" depends="exploded" description="Deploy the exploded application archive">
 		<copy todir="${jboss.server.dir}/deploy">
 			<fileset dir="${root.build.exploded.dir}" includes="**/*"/>
 		</copy>
+		<antcall target="touch"/>
+	</target>
+	<target name="touch" unless="no.touch">
 		<touch file="${jboss.server.dir}/deploy/${root.ear.name}/META-INF/application.xml" verbose="true"/>
 	</target>
 	<target name="implode" description="Undeploy the exploded application archive">
@@ -22,14 +25,19 @@
 		</delete>
 	</target>
 	<target name="dist" description="Build the distribution">
-		<ant antfile="../Bundzilla-ejb/build.xml" target="jar" inheritall="false"/>
-		<ant antfile="../Bundzilla/build.xml" target="war" inheritall="false"/>
-		<ant antfile="build-local.xml" target="ear" inheritall="false"/>
+        <ant antfile="build-local.xml" target="prepare-ear" inheritAll="false"/>
+		<ant antfile="${root.dir}/Bundzilla-ejb/build.xml" target="jar" inheritAll="false" dir="${root.dir}/Bundzilla-ejb"/>
+		<ant antfile="../Bundzilla/build.xml" target="war" inheritAll="false"/>
+		<copy todir="${root.build.dir}/Bundzilla-ear">
+			<fileset dir="${root.build.dir}/Bundzilla" includes="Bundzilla.war"/>
+            <fileset dir="${root.build.dir}/Bundzilla-ejb" includes="Bundzilla-ejb.jar"/>
+		</copy>
+		<ant antfile="build-local.xml" target="ear" inheritAll="false"/>
 	</target>
 	<target name="clean" description="Cleans up the built artifacts">
-		<ant antfile="build-local.xml" target="clean" inheritall="false"/>
-		<ant antfile="../Bundzilla/build.xml" target="clean" inheritall="false"/>
-		<ant antfile="../Bundzilla-ejb/build.xml" target="clean" inheritall="false"/>
+		<ant antfile="build-local.xml" target="clean" inheritAll="false"/>
+		<ant antfile="../Bundzilla/build.xml" target="clean" inheritAll="false"/>
+		<ant antfile="../Bundzilla-ejb/build.xml" target="clean" inheritAll="false"/>
 		<delete dir="${root.build.exploded.dir}"/>
 		<delete dir="${root.build.dir}"/>
 	</target>

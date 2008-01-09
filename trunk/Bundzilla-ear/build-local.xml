@@ -17,9 +17,16 @@
 			</fileset>
 		</copy>
 	</target>
+	<target name="prepare-ear" depends="exploded" description="Package the archive">
+        <copy todir="${project.build.dir}">
+            <fileset dir="${root.ear.content.dir}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+	</target>
 	<target name="ear" depends="exploded" description="Package the archive">
 		<jar jarfile="${root.ear.file}" update="true">
-			<fileset dir="${root.ear.exploded.dir}">
+			<fileset dir="${project.build.dir}">
 				<include name="**/*"/>
 			</fileset>
 		</jar>
