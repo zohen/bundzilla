@@ -2,7 +2,7 @@
           "-//JBoss/Seam Pages Configuration DTD 1.2//EN"
           "http://jboss.com/products/seam/pages-1.2.dtd">
 
-<pages no-conversation-view-id="/home.xhtml"
+<pages no-conversation-view-id="/index.xhtml"
                  login-view-id="/login.xhtml">
 
     <page view-id="*">
