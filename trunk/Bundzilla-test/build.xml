@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<project name="Bundzilla-test" default="test" basedir=".">
+
+    <property environment="env"/>
+    <property name="project.name" value="Bundzilla-test"/>
+    <property file="../Bundzilla-ear/build.properties"/>
+    <property file="${basedir}/build.properties"/>
+    <property name="profile" value="dev"/>
+    <property file="${root.ear.project.dir}/build-${profile}.properties"/>
+    <property name="testng.jar" value="${project.dir}/lib/testng-4.5.1-jdk15.jar"/>
+    <!-- THIS IS A TEMPORARY HACK - @no-TEMP-->
+    <!--property name="testng.jar" value="${root.dir}/lib/testng-4.5.1-jdk15.jar"/-->
+	<!--fileset id="temp-lib" dir="${root.dir}/lib">
+		<include name="*.jar"/>
+	</fileset>
+	<fileset id="temp-drools-lib" dir="${root.dir}/drools/lib">
+		<include name="*.jar"/>
+	</fileset-->
+	<fileset id="ejb-lib" dir="${root.ear.content.dir}">
+		<include name="*.jar"/>
+	</fileset>
+    <fileset id="local-lib" dir="${project.dir}/lib">
+		<include name="*.jar"/>
+    </fileset>
+    <fileset id="web-fs" dir="${root.build.dir}/exploded/Bundzilla-ear.ear/Bundzilla.war">
+		<include name="WEB-INF/**"/>
+		<exclude name="WEB-INF/lib/**"/>
+		<exclude name="WEB-INF/classes/components.properties"/>
+    </fileset>
+    <fileset id="ejb-fs" dir="${root.build.dir}/exploded/Bundzilla-ear.ear/Bundzilla-ejb.jar">
+		<include name="**"/>
+		<exclude name="META-INF/MANIFEST.MF"/>
+		<exclude name="META-INF/persistence.xml"/>
+		<exclude name="WEB-INF/**"/> <!-- this got there by mistake -->
+		<exclude name="Bundzilla-ds.xml"/> <!-- this is not used in the microcontainer -->
+    </fileset>
+    <fileset id="ear-fs" dir="${root.build.dir}/exploded/Bundzilla-ear.ear">
+		<include name="META-INF/**"/>
+		<exclude name="META-INF/MANIFEST.MF"/>
+    </fileset>
+    <path id="build.classpath">
+		<fileset refid="ejb-lib"/>
+        <fileset refid="local-lib"/>
+        <path location="${local.classes.dir}"/>
+        <path path="${root.dir}/microcontainer/conf"/>
+        <!-- fileset refid="temp-drools-lib"/--> <!-- @no-TEMP -->
+        <!--fileset refid="temp-lib"/--> <!-- @no-TEMP -->
+        <!--pathelement location="${jboss.client.dir}/stax-api.jar"/-->
+        <!--pathelement location="${root.dir}/jboss-seam.jar"/-->
+    </path>
+    <target name="init" description="Initialize the build">
+        <echo>root.dir = ${root.dir}</echo>
+        <echo>basedir=${basedir}</echo>
+        <mkdir dir="${project.build.dir}"/>
+        <mkdir dir="${local.classes.dir}"/>
+    </target>
+    <target name="compile" depends="init" description="Compile the test Java source code" unless="eclipse.running">
+        <echo>local.src.dir=${local.src.dir}</echo>
+        <copy todir="${local.classes.dir}">
+            <fileset dir="${local.src.dir}">
+                <include name="**/*"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+			<fileset refid="ejb-fs"/>
+			<fileset refid="web-fs"/>
+			<fileset refid="ear-fs"/>
+        </copy>
+
+        <javac classpathref="build.classpath" destdir="${local.classes.dir}" debug="${javac.debug}" deprecation="${javac.deprecation}" nowarn="on">
+            <src path="${local.src.dir}"/>
+        </javac>
+    </target>
+    <target name="copyclasses" depends="init" description="Copy the classes that were compiled by eclipse" if="eclipse.running">
+        <copy todir="${local.classes.dir}">
+            <fileset dir="build/classes">
+                <include name="**/*.class"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean" description="Cleans up the build directory">
+        <delete dir="${project.build.dir}"/>
+    </target>
+
+    <target name="test" depends="init"
+          description="Runs the tests">
+        
+        <taskdef resource="testngtasks"
+                 classpath="${testng.jar}"/>
+        
+        <delete dir="${project.build.dir}/test-output"/>
+        
+        <testng outputdir="${project.build.dir}/test-output" dumpCommand="true">
+            <classpath refid="build.classpath"/>
+            <classpath path="${eejb.conf.dir}"/>
+            <xmlfileset dir="${local.src.dir}" includes="**/testng.xml"/>
+        </testng>
+            
+    </target>
+
+</project>
