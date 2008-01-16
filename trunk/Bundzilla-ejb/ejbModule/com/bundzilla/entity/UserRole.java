@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Version;
 import org.hibernate.validator.Length;
 
 @Entity
+@Table(name="APP_UserRole")
 public class UserRole implements Serializable {
 	
 	private Long id;
