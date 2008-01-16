@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd">
+
+<suite name="Bundzilla-test" verbose="2" parallel="false">
+
+   <test name="Login">
+     <classes>
+       <class name="org.bundzilla.test.UserTest"/>
+     </classes>
+   </test>
+	
+   <test name="Hello">
+     <classes>
+       <class name="org.bundzilla.test.HelloTest"/>
+     </classes>
+   </test>
+	
+</suite>

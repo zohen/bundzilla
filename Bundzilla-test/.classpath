@@ -15,5 +15,5 @@
 	<classpathentry kind="lib" path="/Bundzilla/web"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Bundzilla"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Bundzilla-ejb"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="build/classes"/>
 </classpath>
